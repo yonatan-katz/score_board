@@ -50,19 +50,45 @@ body {font-family: "Lato", sans-serif;}
 <p><h2>Deep learning course leader board:</h2></p>
 
 <div class="tab">
-{{#each days}}
+{{#each context.days}}
   {{#if @first}}
-      <button class="tablinks" onclick="openCity(event, '{{.}}')"  id="defaultOpen" >{{.}}</button>  
+      <button class="tablinks" onclick="openCity(event, '{{day}}')"  id="defaultOpen" >{{day}}</button>  
   {{else}}
-      <button class="tablinks" onclick="openCity(event, '{{.}}')">{{.}}</button>  
+      <button class="tablinks" onclick="openCity(event, '{{day}}')">{{day}}</button>  
   {{/if}}  
 {{/each}}
 </div>
 
-{{#each days}}
-<div id="{{.}}" class="tabcontent">
-  <h3>{{.}}</h3>
-  <p>This is day: {{.}}</p>
+
+{{#each context.days}}
+<div id="{{day}}" class="tabcontent">
+    <div class="container">
+    <p>Day: {{day}}</p>
+    <table class="table table-bordered">    
+    <thead>
+        <th>Project</th>
+        {{#each ../context.datasets}}
+            <th>{{.}}</th>
+        {{/each}}
+        <th>Winloss</th>
+        <th>median</th>
+    </thead>
+    <tbody>
+        {{#each projects}}
+            <tr>
+            <td>{{project}}</td>
+            {{#each l2}}
+                <td>{{.}}</td>
+            {{/each}}                
+            <td>{{win_loss}}</td>
+            <td>{{model_median_vs_lin}}</td>
+            </tr>
+        {{/each}}
+        
+    </tbody>
+    </table>
+    </div>
+
 </div>
 {{/each}}
 
