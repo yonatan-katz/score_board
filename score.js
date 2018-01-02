@@ -20,7 +20,18 @@ var handlebars = require('express3-handlebars')
         for(var i = from; i < to; i += incr)
         accum += block.fn(i);
         return accum;
+    },
+    float_num : function(num,block) {
+        if (typeof num == 'number')
+        {
+            return num.toPrecision(3);
+        }
+        else
+        {
+            return num;
+        }
     }
+    
 }}); 
  
 

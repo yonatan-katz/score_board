@@ -7,8 +7,8 @@ body {font-family: "Lato", sans-serif;}
     float: left;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
-    width: 30%;
-    height: 300px;
+    width: 10%;
+    height: 500px;
 }
 
 /* Style the buttons inside the tab */
@@ -41,9 +41,10 @@ body {font-family: "Lato", sans-serif;}
     float: left;
     padding: 0px 12px;
     border: 1px solid #ccc;
-    width: 70%;
+    width: 90%;
+    overflow-x:scroll;
     border-left: none;
-    height: 300px;
+    height: 500px;
 }
 </style>
 
@@ -63,7 +64,7 @@ body {font-family: "Lato", sans-serif;}
 {{#each context.days}}
 <div id="{{day}}" class="tabcontent">
     <div class="container">
-    <p>Day: {{day}}</p>
+    <h4>Day: {{day}}</h4>
     <table class="table table-bordered">    
     <thead>
         <th>Project</th>
@@ -77,18 +78,17 @@ body {font-family: "Lato", sans-serif;}
         {{#each projects}}
             <tr>
             <td>{{project}}</td>
-            {{#each l2}}
-                <td>{{.}}</td>
+            {{#each stat}}
+                <td>{{float_num .}}</td>
             {{/each}}                
             <td>{{win_loss}}</td>
-            <td>{{model_median_vs_lin}}</td>
+            <td>{{float_num model_median_vs_lin}}</td>
             </tr>
         {{/each}}
         
     </tbody>
     </table>
     </div>
-
 </div>
 {{/each}}
 
